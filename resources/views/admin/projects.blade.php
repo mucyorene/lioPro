@@ -19,6 +19,7 @@
                     </div>
                 </div>
                 <div class="card-body">
+                  @include('message')
                 <div class="table-responsive">
                     <table class="table table-striped table-hover" id="save-stage" style="width:100%;">
                     <thead>
@@ -28,7 +29,8 @@
                         <th>Current Stage</th>
                         <th>Location</th>
                         <th>Description</th>
-                        <th>Action</th>
+                        <th>Remove</th>
+                        <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,7 +42,8 @@
                             <td>{{$project->currentStage}}</td>
                             <td>{{$project->location}}</td>
                             <td>{{$project->description}}</td>
-                            <td><a href="" class="btn btn-flat btn-danger btn-sm">Delete</a></td>
+                            <td><button onclick="removeProject({{$project->id}})" class="btn btn-flat btn-danger btn-sm"><span class="fas fa-minus"></span></button></td>
+                            <td><a href="/editProject.{{$project->id}}" class="btn btn-flat btn-warning btn-sm"><span class="fas fa-edit"></span></a></td>
                           </tr>
                         @endforeach
                       @endif
@@ -62,5 +65,13 @@
                 window.location = '/newPro';
             });
         });
+    </script>
+    <script>
+      function removeProject(id){
+        var values = confirm("Do you really want to delete project??");
+        if (values) {
+          window.top.location="/removeProject/"+id;
+        }
+      }
     </script>
   @endsection

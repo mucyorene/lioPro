@@ -42,16 +42,29 @@ class Dashboard extends Controller
                 $image->move(public_path().'/images/', $imageName);  
                 $data[] = $imageName;  
             }
+
+
+            
+            $project = Projects::find($id);
+            $project->client = $request->input('client');
+            $project->position = $request->input('position');
+            $project->currentStage = $request->input('currentStage');
+            $project->location = $request->input('location');
+            $project->description = $request->input('description');
+            $project->image = json_encode($data);
+            $project->save();
+            return back()->with('success','Project successfully modified.');
+        }else{
+            $project = Projects::find($id);
+            $project->client = $request->input('client');
+            $project->position = $request->input('position');
+            $project->currentStage = $request->input('currentStage');
+            $project->location = $request->input('location');
+            $project->description = $request->input('description');
+            $project->save();
+            return back()->with('success','Project successfully modified.');
         }
-        $project = new Projects;
-        $project->client = $request->input('client');
-        $project->position = $request->input('position');
-        $project->currentStage = $request->input('currentStage');
-        $project->location = $request->input('location');
-        $project->description = $request->input('description');
-        $project->image = json_encode($data);
-        $project->save();
-        return back()->with('success','Project successfully saved.');
+        
     }
 
     /**
@@ -62,7 +75,8 @@ class Dashboard extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Projects::find($id);
+        return view('admin.edit',compact('data'));
     }
 
     /**
@@ -73,7 +87,7 @@ class Dashboard extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -96,6 +110,8 @@ class Dashboard extends Controller
      */
     public function destroy($id)
     {
-        //
+        $removeProject = Projects::find($id);
+        $removeProject->delete();
+        return back()->with('success', 'Project removed successfully');
     }
 }

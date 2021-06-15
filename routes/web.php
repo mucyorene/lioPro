@@ -29,3 +29,6 @@ Route::get('/listProjects',[PageControllers::class, 'listProject']);
 Route::get('/newPro',[Dashboard::class, 'create']);
 Route::post('/postProject',[Dashboard::class,'store']);
 Route::get('/back',function(){ return redirect('/listProjects'); });
+Route::get('/removeProject/{id}',[Dashboard::class,'destroy']);
+Route::get('/editProject.{id}',[Dashboard::class,'show']);
+Route::post('/postEditProject.{id}',[Dashboard::class,'edit']);
