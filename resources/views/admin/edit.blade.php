@@ -17,7 +17,7 @@
           <div class="col-12 col-md-8 col-lg-8">
               
             <div class="card">
-                <form class="needs-validation" action="{{url('/postEditProject')}}" method="POST" enctype="multipart/form-data" novalidate="">
+                <form class="needs-validation" action="/postEditProject/{{$data->id}}" method="POST" enctype="multipart/form-data" novalidate="">
                 {{csrf_field()}}
                     <div class="card-header bg-primary">
                         <h4 class="text-white">New Project</h4>
@@ -58,7 +58,7 @@
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
                                     <label>Location</label>
-                                    <input type="text" name="location" class="form-control" required="">
+                                    <input type="text" name="location" value="{{$data->location}}" class="form-control" required="">
                                     <div class="invalid-feedback">
                                         Fill out location
                                     </div>
@@ -79,7 +79,7 @@
                                 <div class="form-group">
                                     <label>Images</label>
                                     <div class="input-group" id="increments">
-                                        <input type="file" class="form-control" name="imageName[]" required>
+                                        <input type="file" class="form-control" name="imageName[]">
                                         <div class="input-group-append">
                                             <div class="input-group-text">
                                                 <span id="addForm" class="btn btn-default btn-flat">Add</span>

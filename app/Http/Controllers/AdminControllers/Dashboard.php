@@ -42,29 +42,16 @@ class Dashboard extends Controller
                 $image->move(public_path().'/images/', $imageName);  
                 $data[] = $imageName;  
             }
-
-
-            
-            $project = Projects::find($id);
-            $project->client = $request->input('client');
-            $project->position = $request->input('position');
-            $project->currentStage = $request->input('currentStage');
-            $project->location = $request->input('location');
-            $project->description = $request->input('description');
-            $project->image = json_encode($data);
-            $project->save();
-            return back()->with('success','Project successfully modified.');
-        }else{
-            $project = Projects::find($id);
-            $project->client = $request->input('client');
-            $project->position = $request->input('position');
-            $project->currentStage = $request->input('currentStage');
-            $project->location = $request->input('location');
-            $project->description = $request->input('description');
-            $project->save();
-            return back()->with('success','Project successfully modified.');
         }
-        
+        $project = new Projects;
+        $project->client = $request->input('client');
+        $project->position = $request->input('position');
+        $project->currentStage = $request->input('currentStage');
+        $project->location = $request->input('location');
+        $project->description = $request->input('description');
+        $project->image = json_encode($data);
+        $project->save();
+        return back()->with('success','Project successfully saved.');
     }
 
     /**
@@ -99,7 +86,34 @@ class Dashboard extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->hasfile('imageName')) {
+            foreach ($request->file('imageName') as $image) {
+                $imageName = time().'.'.$image->extension();
+                $image->move(public_path().'/images/', $imageName);  
+                $data[] = $imageName;  
+            }
+
+            $project = Projects::find($id);
+            $project->client = $request->input('client');
+            $project->position = $request->input('position');
+            $project->currentStage = $request->input('currentStage');
+            $project->location = $request->input('location');
+            $project->description = $request->input('description');
+            $project->image = json_encode($data);
+            $project->save();
+            return back()->with('success','Project successfully modified.');
+
+        }else{
+
+            $project = Projects::find($id);
+            $project->client = $request->input('client');
+            $project->position = $request->input('position');
+            $project->currentStage = $request->input('currentStage');
+            $project->location = $request->input('location');
+            $project->description = $request->input('description');
+            $project->save();
+            return back()->with('success','Project successfully modified.');
+        }
     }
 
     /**
