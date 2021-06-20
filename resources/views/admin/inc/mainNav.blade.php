@@ -51,5 +51,4 @@
   <!-- Custom JS File -->
   <script src="dash/assets/js/custom.js"></script>
 </body>
-
 </html>

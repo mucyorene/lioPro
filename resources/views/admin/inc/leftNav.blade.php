@@ -7,18 +7,18 @@
     </div>
     <ul class="sidebar-menu">
       <li class="menu-header">Main</li>
-      <li class="dropdown" id="mainDash">
+      <!-- <li class="dropdown" id="mainDash">
         <a href="/dashs" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
-      </li>
+      </li> -->
       <li class="dropdown" id="home">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i
             data-feather="briefcase"></i><span>Home</span></a>
         <ul class="dropdown-menu">
           <li  id="home1"><a class="nav-link" href="/listProjects">Projects</a></li>
-          <li><a class="nav-link" href="">Lists</a></li>
+          <!-- <li><a class="nav-link" href="">Lists</a></li> -->
         </ul>
       </li>
-      <li class="dropdown">
+      <!-- <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Apps</span></a>
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="">Chat</a></li>
@@ -26,16 +26,16 @@
           <li><a class="nav-link" href="">Blog</a></li>
           <li><a class="nav-link" href="">Calendar</a></li>
         </ul>
-      </li>
-      <li class="menu-header">Main</li>
-      <li class="dropdown">
+      </li> -->
+      <!-- <li class="menu-header">Main</li> -->
+      <!-- <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Contact</span></a>
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="">Inbox</a></li>
           <li><a class="nav-link" href="">Compose</a></li>
           <li><a class="nav-link" href="">read</a></li>
         </ul>
-      </li>
+      </li> -->
     </ul>
   </aside>
 </div>

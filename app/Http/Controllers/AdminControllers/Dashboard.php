@@ -64,6 +64,7 @@ class Dashboard extends Controller
     {
         $data = Projects::find($id);
         return view('admin.edit',compact('data'));
+
     }
 
     /**
@@ -127,5 +128,9 @@ class Dashboard extends Controller
         $removeProject = Projects::find($id);
         $removeProject->delete();
         return back()->with('success', 'Project removed successfully');
+    }
+    public function jReturn(){
+        $all = Projects::all();
+        return $all;
     }
 }
