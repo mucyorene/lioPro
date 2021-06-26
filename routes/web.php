@@ -37,7 +37,6 @@ Route::get('/login',[LoginController::class,'loginPage']);
 //DASHBOARD ROUTES
 
 Route::group(['middleware'=>['authlio']],function(){
-
     Route::get('/registerDummy',[LoginController::class,'dRegisteration'])->name('admin.dRegister');
     Route::get('/dashs',[Dashboard::class,'index']);
     Route::get('/listProjects',[PageControllers::class, 'listProject']);
