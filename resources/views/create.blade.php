@@ -31,7 +31,6 @@
 <h3 class="well">Laravel 6 Multiple File Upload</h3>
 <form method="post" action="{{url('postImages')}}" enctype="multipart/form-data">
   {{csrf_field()}}
-
     <div class="input-group hdtuto control-group lst increment" >
       <input type="file" name="filenames[]" class="myfrm form-control">
       <div class="input-group-btn">

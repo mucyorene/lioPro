@@ -8,14 +8,11 @@
 
           <div class="row">
               <div class="col-12">
-                @include('message')
-              </div>
-              <div class="col-12">
                   <a href="/back" class="btn btn-success btn-sm btn-flat">Back</a>
               </div>
           <div class="col-12 col-md-2 col-lg-2"></div>
           <div class="col-12 col-md-8 col-lg-8">
-              
+              @include('message')
             <div class="card">
                 <form class="needs-validation" action="{{url('/postProject')}}" method="POST" enctype="multipart/form-data" novalidate="">
                 {{csrf_field()}}
@@ -28,17 +25,15 @@
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
                                     <label>Project Client</label>
-                                    <input type="text" name="client" class="form-control" required="">
-                                    <div class="invalid-feedback">
-                                        Fill out Project Name
-                                    </div>
+                                    <input type="text" name="client" value="{{ old('client')}}" placeholder="Enter client name" class="form-control" required="">
+                                    <div class="invalid-feedback">Fill out client</div>
                                 </div>
                             </div>
 
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
                                     <label>Position</label>
-                                    <input type="text" name="position" class="form-control" required="">
+                                    <input type="text" value="{{old('position')}}" placeholder="Enter position" name="position" class="form-control" required="">
                                     <div class="invalid-feedback">
                                         Fill out position
                                     </div>
@@ -48,7 +43,7 @@
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
                                     <label>Current Stage</label>
-                                    <input type="text" name="currentStage" class="form-control" required="">
+                                    <input type="text" value="{{old('currentStage')}}" placeholder="Enter current stage" name="currentStage" class="form-control" required="">
                                     <div class="invalid-feedback">
                                         Current Stage is required
                                     </div>
@@ -58,7 +53,7 @@
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="form-group">
                                     <label>Location</label>
-                                    <input type="text" name="location" class="form-control" required="">
+                                    <input type="text" value="{{old('location')}}" name="location" placeholder="Enter position" class="form-control" required="">
                                     <div class="invalid-feedback">
                                         Fill out location
                                     </div>
@@ -68,7 +63,7 @@
                             <div class="col-12 col-md-12 col-lg-12">
                                 <div class="form-group mb-0">
                                     <label>Description</label>
-                                    <textarea name="description" required class="form-control" cols="30" rows="10"></textarea>
+                                    <textarea name="description" placeholder="Type..." required class="form-control" cols="30" rows="10">{{old('location')}}</textarea>
                                     <div class="invalid-feedback">
                                        Fill out location
                                     </div>

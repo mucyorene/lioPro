@@ -37,21 +37,31 @@ class Dashboard extends Controller
     {
         if ($request->hasfile('imageName')) {
             foreach ($request->file('imageName') as $image) {
+                $request->validate([
+                    'imageName'=>'required',
+                    'client' => 'required|min:3|max:30'
+                 ]);
 
-                $imageName = time().'.'.$image->extension();
+                $imageName = rand().'.'.$image->extension();
                 $image->move(public_path().'/images/', $imageName);  
                 $data[] = $imageName;  
             }
         }
-        $project = new Projects;
-        $project->client = $request->input('client');
-        $project->position = $request->input('position');
-        $project->currentStage = $request->input('currentStage');
-        $project->location = $request->input('location');
-        $project->description = $request->input('description');
-        $project->image = json_encode($data);
-        $project->save();
-        return back()->with('success','Project successfully saved.');
+        $validate = Projects::where('description','=',$request->description,'or','client','=',$request->client)->first();
+        if (empty($validate)) {
+            $project = new Projects;
+            $project->client = $request->input('client');
+            $project->position = $request->input('position');
+            $project->currentStage = $request->input('currentStage');
+            $project->location = $request->input('location');
+            $project->description = $request->input('description');
+            $project->image = json_encode($data);
+            $project->save();
+            return back()->with('success','Project successfully saved.');
+        }else{
+            return back()->with('error','Project already registered');
+        }
+        
     }
 
     /**
@@ -89,21 +99,32 @@ class Dashboard extends Controller
     {
         if ($request->hasfile('imageName')) {
             foreach ($request->file('imageName') as $image) {
+
+                $request->validate([
+                    'imageName'=>'required',
+                    'client' => 'required|min:3|max:30'
+                 ]);
+
                 $imageName = time().'.'.$image->extension();
                 $image->move(public_path().'/images/', $imageName);  
                 $data[] = $imageName;  
             }
-
-            $project = Projects::find($id);
-            $project->client = $request->input('client');
-            $project->position = $request->input('position');
-            $project->currentStage = $request->input('currentStage');
-            $project->location = $request->input('location');
-            $project->description = $request->input('description');
-            $project->image = json_encode($data);
-            $project->save();
-            return back()->with('success','Project successfully modified.');
-
+            $findUpdate = Projects::where('description','=',$request->description,'or','client','=',$request->client)->first();
+            if ($findUpdate) {
+                $project = Projects::find($id);
+                $project->client = $request->input('client');
+                $project->position = $request->input('position');
+                $project->currentStage = $request->input('currentStage');
+                $project->location = $request->input('location');
+                $project->description = $request->input('description');
+                $project->image = json_encode($data);
+                $project->save();
+                return back()->with('success','Project successfully modified.');
+            }
+            else{
+                return back()->with('error','Project duplicate');
+            }
+            
         }else{
 
             $project = Projects::find($id);
