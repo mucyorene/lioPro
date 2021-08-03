@@ -45,7 +45,7 @@ class LoginController extends Controller
             'password' => 'required|min:5|max:15'
         ]);
 
-        $info = Admin::where('email','=','lio@mail.com')->first();
+        $info = Admin::where('email','=',$request->email)->first();
         if (!$info) {
             return back()->with('fail','We do not recognize your email');
         }
