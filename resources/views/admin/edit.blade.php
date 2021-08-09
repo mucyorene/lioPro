@@ -1,6 +1,6 @@
 
   @extends('admin.inc.mainNav')
-  @section('title','Rwanda Kigali')
+  @section('title','MKR Admin')
   @section('content')
 
       <div class="main-content">

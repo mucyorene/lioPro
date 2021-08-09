@@ -1,6 +1,6 @@
 
   @extends('admin.inc.mainNav')
-  @section('title','Rwanda Kigali')
+  @section('title','MKR Admin')
   @section('content')
 
       <div class="main-content">
@@ -62,7 +62,7 @@
 
             $("#addnew").on('click',function(){
                 //alert("Rwanda");
-                window.location = '/newPro';
+                window.location = '/new-project';
             });
         });
     </script>

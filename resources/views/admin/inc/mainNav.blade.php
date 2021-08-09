@@ -26,13 +26,6 @@
   @include('admin.inc.leftNav')
   @yield('content')
 
-  <footer class="main-footer">
-        <div class="footer-left">
-          <a href="projects">Projects</a></a>
-        </div>
-        <div class="footer-right">
-        </div>
-      </footer>
     </div>
   </div>
 

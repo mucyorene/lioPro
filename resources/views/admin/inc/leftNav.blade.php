@@ -1,8 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-      <a href="/dashs"> <img alt="image" src="dash/assets/img/logo.png" class="header-logo" /> <span
-          class="logo-name">Project</span>
+      <a href="/dashs"> <img alt="image" src="dash/assets/img/logo-mini.png" class="" />
       </a>
     </div>
     <ul class="sidebar-menu">
@@ -12,10 +11,10 @@
       </li> -->
       <li class="dropdown" id="home">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i
-            data-feather="briefcase"></i><span>Home</span></a>
+            data-feather="briefcase"></i><span>Projects</span></a>
         <ul class="dropdown-menu">
-          <li  id="home1"><a class="nav-link" href="/listProjects">Projects</a></li>
-          <!-- <li><a class="nav-link" href="">Lists</a></li> -->
+          <li  id="home1"><a class="nav-link" href="/projects">All Projects</a></li>
+          <li><a class="nav-link" href="/new-project">Create New</a></li>
         </ul>
       </li>
       <!-- <li class="dropdown">
