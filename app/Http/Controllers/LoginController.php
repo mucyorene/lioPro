@@ -52,7 +52,7 @@ class LoginController extends Controller
         else {
             if (Hash::check($request->password,$info->password)) {
                $request->session()->put('loggedUser',$info->id);
-               return redirect('/listProjects');
+               return redirect('/projects');
             }else{
                 return back()->with('fail','Incorrect password');
             }
@@ -62,7 +62,7 @@ class LoginController extends Controller
     public function logouts(){
         if (session()->has('loggedUser')) {
             session()->pull('loggedUser');
-            return redirect('/login');
+            return redirect('/sign-in');
         }
     }
 }

@@ -19,7 +19,9 @@ use App\Http\Controllers\PageControllers;
 |
 */
 
-Route::get('/', [StudentController::class,'index']);
+Route::get('/', function () {
+    return redirect('/sign-in');
+});
 //Route::get('studentTest','StudentController@indexTest');
 Route::get('/getImages',[FormControllerImages::class, 'create']);
 Route::post('postImages',[FormControllerImages::class,'store']);
@@ -32,15 +34,15 @@ Route::post('/registerPostDummy',[LoginController::class,'dummies']);
 
 Route::post('/postLogins',[LoginController::class,'authantication'])->name('auth.login');
 Route::get('/dummyLoged',[LoginController::class,'pubDashboard']);
-Route::get('/login',[LoginController::class,'loginPage']);
+Route::get('/sign-in',[LoginController::class,'loginPage']);
+
 
 //DASHBOARD ROUTES
-
 Route::group(['middleware'=>['authlio']],function(){
     Route::get('/registerDummy',[LoginController::class,'dRegisteration'])->name('admin.dRegister');
     Route::get('/dashs',[Dashboard::class,'index']);
-    Route::get('/listProjects',[PageControllers::class, 'listProject']);
-    Route::get('/newPro',[Dashboard::class, 'create']);
+    Route::get('/projects',[PageControllers::class, 'listProject']);
+    Route::get('/new-project',[Dashboard::class, 'create']);
 
     Route::post('/postProject',[Dashboard::class,'store']);
     Route::get('/back',function(){ return redirect('/listProjects'); });
