@@ -18,4 +18,6 @@ use App\Http\Controllers\AdminControllers\Dashboard;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/allProjectsReturn',[Dashboard::class,'jReturn']);
+Route::middleware(['cors'])->group(function () {
+    Route::get('/allProjectsReturn',[Dashboard::class,'jReturn']);
+});
