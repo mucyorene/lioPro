@@ -44,7 +44,7 @@ class Dashboard extends Controller
 
                 $imageName = rand().'.'.$image->extension();
                 $image->move(public_path().'/images/', $imageName);  
-                $data[] = 'https://mkradmin.herokuapp.com/images/'.$imageName;  
+                $data[]['image'] = $imageName;  
             }
         }
         $validate = Projects::where('description','=',$request->description,'or','client','=',$request->client)->first();
