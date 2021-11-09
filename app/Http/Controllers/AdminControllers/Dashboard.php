@@ -151,7 +151,24 @@ class Dashboard extends Controller
         return back()->with('success', 'Project removed successfully');
     }
     public function jReturn(){
-        $all = Projects::all();
-        return $all;
+        $projects = Projects::all();
+        $jsonData = ['status' => 'SUCCESS', 'projects' => []];
+        // dd($projects);
+        foreach ($projects as $project){
+            // $data = json_encode($project->image);
+            $jsonData ['projects'][] = [
+                'id' => $project->id,
+                'client' => $project->client,
+                'position' => $project->position,
+                'currentStage' => $project->currentStage,
+                'location' => $project->location,
+                'description' => $project->description,
+                'image' => json_decode($project->image),
+                'created_at' => $project->created_at,
+                'updated_at' => $project->updated_at,
+            ];
+        }
+        
+        return response()->json($jsonData);
     }
 }
