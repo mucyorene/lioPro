@@ -152,11 +152,10 @@ class Dashboard extends Controller
     }
     public function jReturn(){
         $projects = Projects::all();
-        $jsonData = ['status' => 'SUCCESS', 'projects' => []];
+        // $jsonData = ['status' => 'SUCCESS', 'projects' => []];
         // dd($projects);
         foreach ($projects as $project){
-            // $data = json_encode($project->image);
-            $jsonData ['projects'][] = [
+            $jsonData[] = [
                 'id' => $project->id,
                 'client' => $project->client,
                 'position' => $project->position,
